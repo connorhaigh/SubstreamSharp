@@ -170,6 +170,9 @@ namespace SubstreamSharp
 		public override void Flush() => this.stream.Flush();
 
 		/// <inheritdoc />
+		public override long Length => this.length;
+
+		/// <inheritdoc />
 		public override bool CanRead => this.stream.CanRead;
 
 		/// <inheritdoc />
@@ -179,23 +182,20 @@ namespace SubstreamSharp
 		public override bool CanWrite => this.stream.CanWrite;
 
 		/// <inheritdoc />
-		public override bool CanTimeout => base.CanTimeout;
-
-		/// <inheritdoc />
-		public override long Length => this.length;
+		public override bool CanTimeout => this.stream.CanTimeout;
 
 		/// <inheritdoc />
 		public override int ReadTimeout
 		{
 			get => base.ReadTimeout;
-			set => base.ReadTimeout = value;
+			set => throw new NotImplementedException("Cannot set the read timeout of a substream.");
 		}
 
 		/// <inheritdoc />
 		public override int WriteTimeout
 		{
 			get => base.WriteTimeout;
-			set => base.WriteTimeout = value;
+			set => throw new NotImplementedException("Cannot set the write timeout of a substream.");
 		}
 
 		/// <inheritdoc />
