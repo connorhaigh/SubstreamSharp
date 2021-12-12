@@ -1,0 +1,19 @@
+# Build
+[Dd]ebug/
+[Rr]elease/
+
+[Oo]bj/
+[Bb]in/
+
+[Bb]uild[Llog].*
+[Tt]est[Rr]esults*/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.obj
+*.pdb
+
+# General
+Thumbs.db

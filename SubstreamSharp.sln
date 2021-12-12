@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubstreamSharp", "SubstreamSharp\SubstreamSharp.csproj", "{37B445FA-24E0-4D76-B8E2-343119A42815}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubstreamSharp.Tests", "SubstreamSharp.Tests\SubstreamSharp.Tests.csproj", "{B429081C-C2C8-4343-B704-21E715B7AE50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C28FA77D-7C58-435D-8A53-64173AFBFB0F}"
+	ProjectSection(SolutionItems) = preProject
+		Licence.txt = Licence.txt
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37B445FA-24E0-4D76-B8E2-343119A42815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B445FA-24E0-4D76-B8E2-343119A42815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B445FA-24E0-4D76-B8E2-343119A42815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B445FA-24E0-4D76-B8E2-343119A42815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B429081C-C2C8-4343-B704-21E715B7AE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B429081C-C2C8-4343-B704-21E715B7AE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B429081C-C2C8-4343-B704-21E715B7AE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B429081C-C2C8-4343-B704-21E715B7AE50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49DF0DC5-0D3B-42CA-8474-4A82FC1ED117}
+	EndGlobalSection
+EndGlobal
