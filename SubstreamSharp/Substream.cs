@@ -204,11 +204,6 @@ namespace SubstreamSharp
 			get => this.position;
 			set
 			{
-				if (!this.stream.CanSeek)
-				{
-					throw new NotSupportedException("Underlying stream does not support position modifications.");
-				}
-
 				if (value < 0)
 				{
 					throw new ArgumentOutOfRangeException("Position cannot be less than zero.");
