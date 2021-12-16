@@ -1,4 +1,4 @@
-![Icon](Icon.png)
+![Icon](https://raw.githubusercontent.com/connorhaigh/SubstreamSharp/master/Icon.png)
 
 # SubstreamSharp
 

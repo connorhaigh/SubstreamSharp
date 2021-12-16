@@ -11,7 +11,7 @@ namespace SubstreamSharp
 	public class Substream : Stream
 	{
 		/// <summary>
-		/// Creates a new substream instance of the specified underlying stream at the specified offset with the specified length.
+		/// Creates a new substream instance using the specified underlying stream at the specified offset with the specified length.
 		/// </summary>
 		/// <param name="stream">The underlying stream.</param>
 		/// <param name="offset">The offset.</param>
