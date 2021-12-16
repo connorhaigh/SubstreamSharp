@@ -163,7 +163,7 @@ namespace SubstreamSharp
 			// While other Stream implementations allow the caller to set the length, this does not make much sense in the context of a substream.
 			// Perhaps, in the future, we can allow callers to reduce the length, but not expand the length.
 
-			throw new NotSupportedException("Attempted to set the length of a fixed substream.");
+			throw new NotSupportedException("Cannot set the length of a fixed substream.");
 		}
 
 		/// <inheritdoc />
@@ -188,14 +188,14 @@ namespace SubstreamSharp
 		public override int ReadTimeout
 		{
 			get => base.ReadTimeout;
-			set => throw new NotImplementedException("Cannot set the read timeout of a substream.");
+			set => throw new NotSupportedException("Cannot set the read timeout of a substream.");
 		}
 
 		/// <inheritdoc />
 		public override int WriteTimeout
 		{
 			get => base.WriteTimeout;
-			set => throw new NotImplementedException("Cannot set the write timeout of a substream.");
+			set => throw new NotSupportedException("Cannot set the write timeout of a substream.");
 		}
 
 		/// <inheritdoc />
