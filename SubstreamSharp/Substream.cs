@@ -11,7 +11,7 @@ namespace SubstreamSharp
 	public class Substream : Stream
 	{
 		/// <summary>
-		/// Creates a new substream instance of the specified underlying stream at the specified offset with the specified length.
+		/// Creates a new substream instance using the specified underlying stream at the specified offset with the specified length.
 		/// </summary>
 		/// <param name="stream">The underlying stream.</param>
 		/// <param name="offset">The offset.</param>
@@ -163,11 +163,14 @@ namespace SubstreamSharp
 			// While other Stream implementations allow the caller to set the length, this does not make much sense in the context of a substream.
 			// Perhaps, in the future, we can allow callers to reduce the length, but not expand the length.
 
-			throw new NotSupportedException("Attempted to set the length of a fixed substream.");
+			throw new NotSupportedException("Cannot set the length of a fixed substream.");
 		}
 
 		/// <inheritdoc />
 		public override void Flush() => this.stream.Flush();
+
+		/// <inheritdoc />
+		public override long Length => this.length;
 
 		/// <inheritdoc />
 		public override bool CanRead => this.stream.CanRead;
@@ -179,23 +182,20 @@ namespace SubstreamSharp
 		public override bool CanWrite => this.stream.CanWrite;
 
 		/// <inheritdoc />
-		public override bool CanTimeout => base.CanTimeout;
-
-		/// <inheritdoc />
-		public override long Length => this.length;
+		public override bool CanTimeout => this.stream.CanTimeout;
 
 		/// <inheritdoc />
 		public override int ReadTimeout
 		{
 			get => base.ReadTimeout;
-			set => base.ReadTimeout = value;
+			set => throw new NotSupportedException("Cannot set the read timeout of a substream.");
 		}
 
 		/// <inheritdoc />
 		public override int WriteTimeout
 		{
 			get => base.WriteTimeout;
-			set => base.WriteTimeout = value;
+			set => throw new NotSupportedException("Cannot set the write timeout of a substream.");
 		}
 
 		/// <inheritdoc />
@@ -204,11 +204,6 @@ namespace SubstreamSharp
 			get => this.position;
 			set
 			{
-				if (!this.stream.CanSeek)
-				{
-					throw new NotSupportedException("Underlying stream does not support position modifications.");
-				}
-
 				if (value < 0)
 				{
 					throw new ArgumentOutOfRangeException("Position cannot be less than zero.");

@@ -160,7 +160,31 @@ namespace SubstreamSharp.Tests
 				var substream = new Substream(memoryStream, 0L, 2L);
 				var exception = Assert.ThrowsException<NotSupportedException>(() => substream.SetLength(4L));
 
-				Assert.AreEqual("Attempted to set the length of a fixed substream.", exception.Message);
+				Assert.AreEqual("Cannot set the length of a fixed substream.", exception.Message);
+			}
+		}
+
+		[TestMethod]
+		public void TestSetReadTimeout()
+		{
+			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4 }))
+			{
+				var substream = new Substream(memoryStream, 0L, 2L);
+				var exception = Assert.ThrowsException<NotSupportedException>(() => substream.ReadTimeout = 60);
+
+				Assert.AreEqual("Cannot set the read timeout of a substream.", exception.Message);
+			}
+		}
+
+		[TestMethod]
+		public void TestSetWriteTimeout()
+		{
+			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4 }))
+			{
+				var substream = new Substream(memoryStream, 0L, 2L);
+				var exception = Assert.ThrowsException<NotSupportedException>(() => substream.WriteTimeout = 60);
+
+				Assert.AreEqual("Cannot set the write timeout of a substream.", exception.Message);
 			}
 		}
 	}
