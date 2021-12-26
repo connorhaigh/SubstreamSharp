@@ -61,20 +61,11 @@ namespace SubstreamSharp
 			}
 
 			this.stream.Seek(this.offset + this.position, SeekOrigin.Begin);
+			this.stream.Read(buffer, offset, count = Convert.ToInt32(Math.Min(count, this.length - this.position)));
 
-			// Unfortunately this does not gracefully handle an overflow and instead will just throw an exception.
-			// Perhaps, in the future, we would want to store the read position and read length independently like other Stream implementations do.
+			this.position += count;
 
-			var position = Convert.ToInt32(this.position);
-			var length = Convert.ToInt32(this.length);
-
-			var read = Math.Min(count, length - position);
-
-			this.stream.Read(buffer, offset, read);
-
-			this.position += read;
-
-			return read;
+			return count;
 		}
 
 		/// <inheritdoc />
@@ -91,18 +82,9 @@ namespace SubstreamSharp
 			}
 
 			this.stream.Seek(this.offset + this.position, SeekOrigin.Begin);
+			this.stream.Write(buffer, offset, count = Convert.ToInt32(Math.Min(count, this.length - this.position)));
 
-			// Unfortunately this does not gracefully handle an overflow and instead will just throw an exception.
-			// Perhaps, in the future, we would want to store the write position and write length independently like other Stream implementations do.
-
-			var position = Convert.ToInt32(this.position);
-			var length = Convert.ToInt32(this.length);
-
-			var write = Math.Min(count, length - position);
-
-			this.stream.Write(buffer, offset, write);
-
-			this.position += write;
+			this.position += count;
 		}
 
 		/// <inheritdoc />
