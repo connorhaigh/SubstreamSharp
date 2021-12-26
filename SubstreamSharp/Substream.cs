@@ -187,14 +187,14 @@ namespace SubstreamSharp
 		/// <inheritdoc />
 		public override int ReadTimeout
 		{
-			get => base.ReadTimeout;
+			get => this.stream.ReadTimeout;
 			set => throw new NotSupportedException("Cannot set the read timeout of a substream.");
 		}
 
 		/// <inheritdoc />
 		public override int WriteTimeout
 		{
-			get => base.WriteTimeout;
+			get => this.stream.WriteTimeout;
 			set => throw new NotSupportedException("Cannot set the write timeout of a substream.");
 		}
 
