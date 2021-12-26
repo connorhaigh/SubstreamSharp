@@ -4,7 +4,7 @@
 
 		<Product>SubstreamSharp</Product>
 		<Description>SubstreamSharp is a C# library that provides the ability to create substreams of fixed regions from any given stream.</Description>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 
 		<Authors>Connor Haigh</Authors>
 		<Copyright>Connor Haigh 2021</Copyright>
