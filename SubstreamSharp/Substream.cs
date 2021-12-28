@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SubstreamSharp
 {
 	/// <summary>
 	/// Represents a substream of an underlying <see cref="Stream" />.
-	/// Substreams support all the operations of the underlying <see cref="Stream" /> within the context of the specified region.
-	/// Underlying streams must support the ability to seek.
 	/// </summary>
 	public class Substream : Stream
 	{

@@ -6,13 +6,13 @@ SubstreamSharp is a C# library that provides the ability to create substreams of
 
 ## Overview
 
-A substream is effectively a region of the underlying stream with a fixed position and offset that behaves as an independent stream. A substream supports all the operations that the underlying stream does, however only within the context of specific region.
+A substream is effectively a region of the underlying stream with a fixed position and offset that behaves as an independent stream. A substream supports all the operations that the underlying stream does, however only within the context of a specific region.
 
 The main usage is the ability to provide callers with a portion of a stream that might be backed by a larger stream, for instance a large uncompressed binary file stream that may have individual files within its contents exposed as substreams.
 
 ## Examples
 
-Creating a substream from a file stream starting from offset 128 for the following 1024 bytes:
+Creating a substream from a file stream starting from an offset of 128 bytes for the following 1024 bytes:
 
 ```csharp
 using SubstreamSharp;
