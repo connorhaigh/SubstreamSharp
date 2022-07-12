@@ -13,9 +13,9 @@ namespace SubstreamSharp.Tests
 		{
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
+				var substream = new Substream(memoryStream, 2L, 4L);
 				var buffer = new byte[4];
 
-				var substream = new Substream(memoryStream, 2L, 4L);
 				substream.Read(buffer);
 
 				Assert.IsTrue(buffer.SequenceEqual(new byte[] { 3, 4, 5, 6 }));
@@ -29,6 +29,7 @@ namespace SubstreamSharp.Tests
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
 				var substream = new Substream(memoryStream, 2L, 4L);
+
 				substream.Write(new byte[] { 9, 10, 11, 12 });
 
 				Assert.IsTrue(memoryStream.ToArray().SequenceEqual(new byte[] { 1, 2, 9, 10, 11, 12, 7, 8 }));
@@ -42,6 +43,7 @@ namespace SubstreamSharp.Tests
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
 				var substream = new Substream(memoryStream, 0L, 8L);
+
 				substream.Seek(2L, SeekOrigin.Begin);
 
 				Assert.AreEqual(2L, substream.Position);
@@ -54,6 +56,7 @@ namespace SubstreamSharp.Tests
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
 				var substream = new Substream(memoryStream, 0L, 8L);
+
 				substream.Seek(-2L, SeekOrigin.End);
 
 				Assert.AreEqual(6L, substream.Position);
@@ -66,6 +69,7 @@ namespace SubstreamSharp.Tests
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
 				var substream = new Substream(memoryStream, 0L, 8L);
+
 				substream.Read(new byte[2]);
 				substream.Seek(2L, SeekOrigin.Current);
 
@@ -78,9 +82,9 @@ namespace SubstreamSharp.Tests
 		{
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
+				var substream = new Substream(memoryStream, 2L, 4L);
 				var buffer = new byte[8];
 
-				var substream = new Substream(memoryStream, 2L, 4L);
 				var count = substream.Read(buffer);
 
 				Assert.IsTrue(buffer.SequenceEqual(new byte[] { 3, 4, 5, 6, 0, 0, 0, 0 }));
@@ -93,10 +97,9 @@ namespace SubstreamSharp.Tests
 		{
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
-				var buffer = new byte[8] { 9, 10, 11, 12, 13, 14, 15, 16 };
-
 				var substream = new Substream(memoryStream, 2L, 4L);
-				substream.Write(buffer);
+
+				substream.Write(new byte[8] { 9, 10, 11, 12, 13, 14, 15, 16 });
 
 				Assert.IsTrue(memoryStream.ToArray().SequenceEqual(new byte[] { 1, 2, 9, 10, 11, 12, 7, 8 }));
 				Assert.AreEqual(4L, substream.Position);
@@ -108,9 +111,9 @@ namespace SubstreamSharp.Tests
 		{
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
+				var substream = new Substream(memoryStream, 0L, 8L);
 				var buffer = new byte[8];
 
-				var substream = new Substream(memoryStream, 0L, 8L);
 				var count = substream.Read(buffer, 4, 4);
 
 				Assert.IsTrue(buffer.SequenceEqual(new byte[] { 0, 0, 0, 0, 1, 2, 3, 4 }));
@@ -123,10 +126,9 @@ namespace SubstreamSharp.Tests
 		{
 			using (var memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
 			{
-				var buffer = new byte[8] { 9, 10, 11, 12, 13, 14, 15, 16 };
-
 				var substream = new Substream(memoryStream, 0L, 8L);
-				substream.Write(buffer, 4, 4);
+
+				substream.Write(new byte[8] { 9, 10, 11, 12, 13, 14, 15, 16 }, 4, 4);
 
 				Assert.IsTrue(memoryStream.ToArray().SequenceEqual(new byte[] { 13, 14, 15, 16, 5, 6, 7, 8 }));
 				Assert.AreEqual(4L, substream.Position);
